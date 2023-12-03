@@ -1,0 +1,132 @@
+{% extends "Dummy.html" %}
+{% load static %}
+{% block title %}
+<title>Register</title>
+{% endblock %}
+
+{% block body_block %}
+<style>
+    body
+    {
+        margin: 0px;
+        background-image:url('{% static 'images/Registration.jpg' %}');
+        background-repeat:no-repeat;
+        background-size:cover;
+        background-position:0px 0px ;
+        background-attachment:fixed;
+    }
+    form
+    {
+      
+       margin-top: 100px;
+       color: white;
+       background-color: rgb(0, 0, 0);
+       opacity: 0.5;
+       height: auto;
+       width:250px;
+       padding: 20px;
+       margin-left:650px;
+       box-shadow: 0px 0px 40px whitesmoke;
+       border-radius: 30px 0px 30px 0px;
+    }
+    input
+    {
+        border-radius:10px;
+        background-color: aqua;
+    }
+    #three
+    {
+        background:linear-gradient(to left,white,blue);
+        margin-top: 5px;
+        padding: 20px;
+        opacity: 0.7;
+        color: rgb(255, 255, 255);
+       
+    }
+    #four
+    {
+        
+
+        border-radius: 0px 10px 0px 10px;
+        color: rgb(91, 0, 0);
+        padding: 2px;
+        margin-left: 55px;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 20px;
+        width: 100px;
+        box-shadow: 0px 0px 5px aliceblue;
+    }
+
+    button
+    {
+        background:linear-gradient(to right,green,yellow);
+        color: rgb(106, 0, 0);
+        border: 2px solid whitesmoke;
+        padding: 5px;
+        font-size: 25px;
+        border-radius: 15px 0px 15px 0px;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        opacity: 0.7;
+        
+    }
+</style>
+
+
+
+
+<h1 id = "three" align = "center">Register Here</h1>
+
+<center><button onclick="document.getElementById('register').style.visibility='visible'">Click to Register</button>
+    </center>
+  
+  <form action="" method="POST" id="register" style="visibility: hidden;" onsubmit="return validate()"  >
+    <span align="right" style="margin-left: 210px; border:2px solid white; cursor:pointer;" onclick="document.getElementById('register').style.visibility='hidden'">X</span>
+    {% csrf_token %}
+    {{UMF.as_p}}
+    <input type="submit" value="Submit" id = "four">
+  </form>
+
+
+  <script>
+
+    //id_username
+
+
+      function validate()
+      {
+        
+        var username=document.getElementById("id_username").value;
+        var email=document.getElementById("id_email").value;
+        var password=document.getElementById("id_password").value;
+
+
+        var regex=/\d/;
+        var regex1=/^[a-z]/;
+        var regex2=/\s/;
+        var regex3=/^[0-5]/;
+        var regex4=/[a-z-A-Z]/;
+        if (regex.test(username) || username.trim()=="" || username.length<4 || regex1.test(username[0]) || regex2.test(username))
+        {
+          document.getElementById("id_username").border="solid red 2px";
+          alert("Your name cannot contain null values \nYour names's first letter must be Capital letter \nYour name can contain atleast 4 characters \n Your name cannot contains the spaces");
+          return false;
+        }
+        else if (email.trim()=="" )
+        {
+          alert("Your email cannot contains the null \nYour email cannot contain spaces");
+          return false;
+        }
+        else if(password.length<6)
+        {
+          alert("Your Password having atlest 6 characters");
+          return false;
+        }
+        
+        else
+        {
+          return true;
+        }
+      }
+  </script>
+  
+{% endblock %}

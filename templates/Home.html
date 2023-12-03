@@ -1,0 +1,117 @@
+{% extends 'Dummy.html' %}
+{% load static %}
+
+{% block title %}
+<title>Home</title>
+{% endblock %}
+
+
+
+
+
+{% block body_block %}
+
+<script>
+    function one()
+        {
+         var a = document.getElementById("my").src="{% static 'images/Bharath.jpg' %}"
+        }
+        function two()
+        {
+         var a = document.getElementById("my").src="{% static 'images/logo.webp' %}"
+        }
+</script>
+
+
+
+<style>
+    body
+    {
+        margin: 0px;
+        background-image:url('{% static 'images/Home.jpg' %}');
+        background-repeat:no-repeat;
+        background-size:cover;
+        background-position:0px 0px ;
+        background-attachment:fixed;
+    }
+    h1
+    {
+        background-color: aliceblue;
+        margin-top: 10px;
+        padding: 10px;
+        opacity: 0.7;
+        color: hwb(85 0% 83%);
+    }
+    img
+    {
+        opacity: 0.8;
+        margin-top:10px;
+        box-shadow: 0px 0px 30px whitesmoke;
+        border-radius:0px 40px 0px 40px;
+
+    }
+    p
+    {
+        background-color: aqua;
+        opacity: 0.8;
+        color: rgb(150, 23, 23);
+        font-size: 20px;
+    }
+    #one
+    {
+        background-color: rgb(189, 255, 237);
+        color: rgb(160, 0, 0);
+        padding: 10px;
+        font-size: 30px;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    #two
+    {
+        display: inline;
+        padding: 15px;
+        width: 100%!important;
+        color: white;
+        font-size: large;
+    }
+    .one
+    {
+        display: inline;
+        box-shadow: 0px 0px 20px whitesmoke;
+        
+    }
+
+
+    </style>
+
+    
+
+<center>
+
+
+    {% if username %}
+    <h1>welcome to Deep Coginition mr/mrs {{ username}}</h1>
+    
+    {% else %}
+    <h1>welcome to Deep Coginition </h1>
+    {% endif %}
+
+    <p><i>DeepCognition<i> is the "mental action or process of acquiring knowledge and understanding through thought, 
+        experience, and the senses".It encompasses all aspects of intellectual functions and processes such as: perception,
+         attention, thought, imagination, intelligence, the formation of knowledge, memory and working memory, judgment and evaluation, 
+         reasoning and computation, problem-solving and decision-making, comprehension and production of language. Cognitive processes
+          use existing knowledge and discover new knowledge.</p>
+
+    <img src="{% static 'images/logo.webp' %}" alt="image not found" id="my" onmouseover="one()" onmouseout="two()" width="600px" height="300px">
+
+    <footer>
+		<h1>copy rights &copy;:2023</h1>
+		<p id = "one">All Rights are reserved</p>
+		<center><small id = "two"><b> Development & Maintained by </b>
+        <a href="https://deepcognition.ai/" class="nav-link btn btn-success one ">Deep Cognition</a>
+	</small>
+    </center>
+	</footer>
+
+
+</center>
+{% endblock %}

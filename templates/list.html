@@ -1,0 +1,110 @@
+{% extends 'Dummy.html' %}
+{% load static %}
+
+{% block title %}
+<title>Home</title>
+{% endblock %}
+
+
+
+
+{% block body_block %}
+
+    <style>
+body
+{
+    margin: 0px;
+    background-image:url('{% static 'images/empdata.gif' %}');
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:0px 0px ;
+    background-attachment:fixed;
+}  
+    
+
+
+#htag
+{
+    background: black;
+    color: white;
+    padding: 20px;
+    margin-top:5px;
+    opacity: 0.7;
+    
+}
+
+#twoe
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+.adata
+{
+    border-radius: 0px 15px 0px 15px;
+    color: rgb(255, 234, 234);
+    background:black;
+    font-size: 25px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    box-shadow: 0px 0px 30px rgb(255, 234, 234);
+    opacity: 0.8;
+    padding: 5px;
+}
+
+
+
+
+
+
+
+.data
+{
+    background-color: aqua;
+    display: block;
+    opacity: 0.6;
+    padding: 5px;
+    color: blue;
+    
+
+    
+}
+</style>
+
+   
+    <h1 id="htag" align="center">Total List of the Employee Data</h1>
+
+    <div id="twoe">
+    {% if username == 'anusha' %}
+
+    {% for i in data %}
+
+    <div id="eleven">
+        <img src="{{i.profile_pic}}" alt="" width="300px" height="300px" style="border-radius:100%; box-shadow:0px 0px 20px black;"><br><br>
+        <a href="{{i.identity}}" ><button class="adata">{{i.name}}</button> </a>     
+    </div>  
+    
+    <br><br>
+        {% endfor %}
+
+
+</div>
+
+    {% else %}
+
+
+
+    <div id="nametag">
+
+        {% for a in EMP %}
+        <h1 class="data" align="center">{{a.name}}</h1>
+        {% endfor %}
+
+
+    </div>
+    {% endif %}
+        
+
+{% endblock %}

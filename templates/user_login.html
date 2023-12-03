@@ -1,0 +1,92 @@
+{% extends "Dummy.html" %}
+{% load static %}
+{% block title %}
+<title>Login</title>
+    
+{% endblock %}
+
+
+{% block body_block %}
+<style>
+    body
+    {
+        margin: 0px;
+        background-image:url('{% static 'images/login1.jpg' %}');
+        background-repeat:no-repeat;
+        background-size:cover;
+        background-position:0px 0px ;
+        background-attachment:fixed;
+    }  
+
+    #five
+    {
+        margin-top: 10px;
+        background: rgb(21, 255, 0);
+        padding: 10px;
+        color: rgb(255, 255, 255);
+        opacity: 0.8;
+        box-shadow: 0px 0px 10px whitesmoke
+    }
+
+    div
+    {
+        background-color: rgb(255, 255, 255);
+        width: 250px;
+        height: auto;
+        padding: 20px;
+        color: rgb(9, 0, 0);
+        font-size: large;
+        margin-left: 650px;
+        margin-top: 50px;
+        box-shadow: 0px 0px 10px whitesmoke;
+        border-radius: 20px 0px 20px 0px;
+        opacity: 0.8;
+    }
+    #login
+    {
+        background: linear-gradient(to right,rgb(255, 119, 119),rgb(42, 42, 2));
+        padding: 5px;
+        width: 100px;
+        height: 40px;
+        border-radius: 0px 20px 0px 20px;
+        color: whitesmoke;
+        font-size: 20px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+       }
+    input
+    {
+        border-radius:10px;
+    }
+
+    button
+    {
+        background:linear-gradient(to right,green,yellow);
+        color: rgb(106, 0, 0);
+        border: 2px solid whitesmoke;
+        padding: 5px;
+        font-size: 25px;
+        border-radius: 15px 0px 15px 0px;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        opacity: 0.7;
+        
+    }
+    
+</style>
+
+    <h1 id="five" align = "center">Login Here</h1>
+    <center><button onclick="document.getElementById('div-tag').style.visibility='visible'">Click to Login</button></center>
+    <div id="div-tag" style="visibility: hidden;">
+    <form action="" method="POST">
+        <span style="margin-left:213px; border:2px solid rgb(85, 18, 18); color:rgb(7, 0, 0); cursor:pointer; " onclick="document.getElementById('div-tag').style.visibility='hidden'">x</span>
+        {% csrf_token %}
+        <label for="un">username</label>
+        <input type="text" name="un" id="un"><br><br>
+        <label for="pw">password</label>
+        <input type="password" name="pw" id="pw"><br><br>
+        <input type="submit" value="Login" id="login">
+    </form>
+    <i>
+    <a href="{% url 'forget_password' %}" style="color: black !important;" class="nav-link">forget password</a></i>
+    </div>
+
+{% endblock %}

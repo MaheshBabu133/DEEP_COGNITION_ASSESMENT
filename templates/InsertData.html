@@ -1,0 +1,150 @@
+{% extends "Dummy.html" %}
+{% load static %}
+{% block title %}
+<title>Register</title>
+  
+{% endblock %}
+{% block body_block %}
+<style>
+  body
+  {
+      margin:0px;
+      background-image:url('{% static 'images/insert.webp' %}');
+      background-repeat:no-repeat;
+      background-size:cover;
+      background-position:0px 0px;
+      background-attachment:fixed;
+  }
+
+  h1
+  {
+    background-color: rgb(253, 211, 255);
+    padding: 20px;
+    color: rgb(0, 0, 0);
+    opacity: 0.8;
+
+  }
+  
+  form
+  {
+    background-color: rgb(255, 219, 219);
+    height: auto;
+    width: 250px;
+    border-radius: 0px 20px 0px 20px;
+    color: rgb(0, 0, 0);
+    margin-top: 10px;
+    margin-left: 650px;
+    padding: 20px;
+    opacity: 0.8;
+    
+    
+  }
+ 
+  textarea
+  {
+    width: 190px;
+    height: 40px;
+    border-radius: 10px;
+
+  }
+  input
+  {
+    border-radius: 10px;
+  }
+  #sb
+  {
+    border: 2px solid red;
+    border-radius: 0px 15px 0px 15px;
+    padding: 2px;
+    width: 100px;
+    background:radial-gradient(rgb(13, 1, 255),yellow);
+    color: white;
+  }
+
+  button
+    {
+        background:linear-gradient(to right,green,yellow);
+        color: rgb(103, 30, 30);
+        border: 2px solid whitesmoke;
+        padding: 5px;
+        font-size: 25px;
+        border-radius: 15px 0px 15px 0px;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        opacity: 0.9;
+        
+    }
+</style>
+  
+    <h1 align = "center">Fill The Form</h1>\
+    <center>
+  <button onclick="document.getElementById('form-tag').style.visibility='visible'" >Click to get Form</button>
+  </center>
+
+    <form action="" method="POST"  enctype="multipart/form-data" id="form-tag" style="visibility: hidden;" >
+      <span align="right" style="margin-left: 210px; border:2px solid rgb(44, 3, 3); cursor:pointer;" onclick="document.getElementById('form-tag').style.visibility='hidden'">X</span>
+   
+        {% csrf_token %}
+        {{EMP.as_p}}
+
+        <input type="submit" value="Submit" id="sb" onsubmit="return validate()" >
+
+</form>
+
+
+<script>
+      function validate()
+      {
+        
+         var username=document.getElementById("id_name").value;
+         var email=document.getElementById("id_email").value;
+         
+         var regex=/\d/;
+         
+         var regex1=/^[a-z]/;
+         var regex2=/\s/;
+
+         var regex3=/^[0-5]/;
+         var regex4=/[a-z-A-Z]/;
+         //var mobile=document.getElementById("id_mno").value;
+         var age = document.getElementById("id_age").value;
+         
+        if (regex.test(username) || username.trim()=="" || username.length<4 || regex1.test(username[0]) || regex2.test(username))
+        {
+         
+          document.getElementById("id_username").border="solid red 2px";
+          alert("Your name cannot contain null values \nYour names's first letter must be Capital letter \nYour name can contain atleast 4 characters \n Your name cannot contains the spaces");
+          return false;
+          
+        }
+
+
+        else if (email.trim()=="" )
+        {
+          alert("one");
+          alert("Your email cannot contains the null \nYour email cannot contain spaces");
+          return false;
+        }
+       /* else if (mobile.length<10 ||mobile.length>10 || regex3.test(mobile) || regex4.test(mobile))
+        {
+          alert("your number startwith 6-9 only \nnumber cannot contains alphabets \nnumber contains exactly 10 characters")
+          return false;
+        }
+
+        */
+
+        else if(age<17 || age>65)
+        {
+          alert("Employee age Should be grater then 17\nlessthen 66");
+          return false;
+
+        }
+        else
+        {
+          return true;
+        }
+      }
+</script>
+
+
+
+{% endblock %}
