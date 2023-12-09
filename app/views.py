@@ -20,9 +20,10 @@ def Registration(request):
     if request.method == "POST":
         UMF = UserMOdelForm(request.POST)
         if UMF.is_valid():
-            NUMF = UMF.save()
+            NUMF = UMF.save(commit = False)
             password = UMF.cleaned_data['password']
             NUMF.set_password(password)
+            NUMF.save()
             return HttpResponse("Registration done Succefully")
         else:
             return HttpResponse("Invalid Data")
