@@ -61,6 +61,7 @@ def InsertData(request):
 
 
 
+#Super User Login username,password = anusha,anusha
 
 def user_login(request):
     if request.method=="POST":
